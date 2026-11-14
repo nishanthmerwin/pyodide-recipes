@@ -147,6 +147,8 @@ jobs:
         run : |
           which python
           ./tools/prepare_pyodide_build.sh
+          # rdkit recipes need host numpy (libboost-python queries numpy.get_include())
+          python -m pip install numpy
 
       - name: Set Emscripten toolchain and pyodide-build versions for ccache
         run: |
